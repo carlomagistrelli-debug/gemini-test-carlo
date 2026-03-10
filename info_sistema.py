@@ -1,8 +1,11 @@
-#!/usr/bin/env python3
+#!/home/carlo/gemini_test_carlo/venv/bin/python3
 import psutil
 import shutil
 from rich.console import Console
 from rich.table import Table
+
+import sys
+print(f"Sto usando: {sys.executable}")
 
 def format_bytes(size):
     # Converte i byte in una stringa leggibile
