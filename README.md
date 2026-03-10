@@ -18,7 +18,7 @@ Una semplice utility Python per monitorare le risorse di sistema in tempo reale 
 1. **Clona il repository**:
    ```bash
    git clone <il-tuo-url-repository>
-   cd gemini_test
+   cd gemini_test_carlo
    ```
 
 2. **Crea un ambiente virtuale** (consigliato):
