@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import psutil
 import shutil
+from rich.console import Console
+from rich.table import Table
 
 def format_bytes(size):
     # Converte i byte in una stringa leggibile
@@ -10,19 +12,25 @@ def format_bytes(size):
         size /= 1024
 
 def main():
-    print("--- Informazioni di Sistema ---")
-    
+    console = Console()
+    table = Table(title="--- Informazioni di Sistema ---")
+
+    table.add_column("Parametro", justify="left", style="cyan", no_wrap=True)
+    table.add_column("Valore", justify="right", style="magenta")
+
     # Uso CPU
     cpu_usage = psutil.cpu_percent(interval=1)
-    print(f"Uso CPU: {cpu_usage}%")
+    table.add_row("Uso CPU", f"{cpu_usage}%")
     
     # Uso RAM
     ram = psutil.virtual_memory()
-    print(f"Uso RAM: {ram.percent}% (Disponibile: {format_bytes(ram.available)})")
+    table.add_row("Uso RAM", f"{ram.percent}% (Disponibile: {format_bytes(ram.available)})")
     
     # Spazio Disco (root)
     usage = shutil.disk_usage("/")
-    print(f"Spazio Disco Libero: {format_bytes(usage.free)} / {format_bytes(usage.total)}")
+    table.add_row("Spazio Disco Libero", f"{format_bytes(usage.free)} / {format_bytes(usage.total)}")
+
+    console.print(table)
 
 if __name__ == "__main__":
     main()
