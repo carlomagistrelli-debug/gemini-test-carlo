@@ -35,5 +35,8 @@ def main():
 
     console.print(table)
 
+    # Mantieni aperta la finestra su Windows/Linux quando lanciato come eseguibile
+    input("\nPremere Invio per uscire...")
+
 if __name__ == "__main__":
     main()
